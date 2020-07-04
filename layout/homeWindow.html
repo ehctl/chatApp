@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title> Home </title>
+        <script src='main.js'></script>
+        <link rel="stylesheet" href="test.css">
+        
+    </head>
+    <body>
+        <div class='block '>
+            <a class="btnUsername float-right" href="" id='username'>  </a>
+            <a class="btnUsername float-right" href="" id='id'> About  </a>
+        </div>
+        <div class='block full-height'>
+            <div class='div-fixed-30 webview inline-block part-1'>
+                <button class='createButton' onclick="btnCreateClick()"> Create </button>
+                <div id='secGroupChat' >
+                    
+                </div>
+            </div>
+            <div id='secChat' class=' div-50 webview inline-block part-2' >
+                <div class="divInput block ">
+                    <textarea id='input' onkeydown="inputKeydown(event)" class='txtInput inline-block'></textarea>
+                    <img id='imgSend' onclick="imgSendClick()" class='imgSend inline-block' src="sendMessage.png" width="50" height='50' alt='img failed'>
+                </div>
+                <div id='room' class="room block ">
+                    
+                </div>
+            </div>
+            <div id='onlineFriend-tab' class='div-20 webview inline-block part-3'>
+                <div class="online-board">
+                    Friend
+                </div>
+            </div>
+        </div>  
+    </body>
+</html>

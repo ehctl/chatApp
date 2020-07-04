@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title> Login </title>
+        <link rel="stylesheet" href="test.css">
+    </head>
+    <body>
+        <h1 id="fd"> Log in </h1>
+
+        <form id='login-form'>
+            <input type="text" id='l-username' name='i-name' placeholder="Username">
+            <input type="password" id='l-password' name='i-password' placeholder="Password">
+            <input type="submit" value="Login" >
+        </form>
+        <p  id='loginFailed' style="display: none; color: red;">Login-failed!</p>
+        <img src='./loading.gif' id='loading' style="display: none;">
+
+        <h1> Don't have account? Register</h1>
+        <form id='register-form' >
+            <input class="block" type="text" id='r-username' name='i-username' placeholder="Username">
+            <input class="block" type="text" id='r-fname' name='i-fname' placeholder="First Name">
+            <input class="block" type="text" id='r-lname' name='i-lname' placeholder="Last Name">
+            <input class="block" type="text" id='r-age' name='i-age' placeholder="Age">
+            <input class="block" type="password" id='r-password' name='i-password' placeholder="Password">
+            <input class="block" type="password" id='rc-password' placeholder="Confirm Password">
+            <input class="block" type="submit" value="Register" >
+        </form>
+        <p  id='warning' style="display: none; color: red;"></p>
+        <script>
+            const electron =  require("electron");
+            const { ipcRenderer } = electron;
+            var form = document.querySelector('#login-form');
+            form.addEventListener('submit',submitEvent);
+            
+            function submitEvent(e){
+                let us = document.querySelector("#l-username");
+                let pw = document.querySelector("#l-password");
+
+                ipcRenderer.send('login', JSON.stringify({
+                    userName: us.value,
+                    password: pw.value
+                }))
+
+                ipcRenderer.on('login-failed',()=>{
+                    document.querySelector('#loginFailed').style.display='block'
+                });
+
+                ipcRenderer.on('register-failed',()=>{
+                    document.querySelector('#warning').innerHTML = "Failed to register your account\nCheck username and password!"
+                    document.querySelector('#warning').style.display = 'block'
+                })
+
+                ipcRenderer.on('wait-for-login-signal', ()=>{
+                    document.querySelector('#loading').style.display = 'block';
+                })
+            }
+
+            form = document.querySelector('#register-form')
+            form.addEventListener('submit',registerEvent);
+
+            function registerEvent(e){
+                let us = document.querySelector("#r-username");
+                let pw = document.querySelector("#r-password");
+                let cpw = document.querySelector("#rc-password");
+                let fname = document.querySelector("#r-fname");
+                let lname = document.querySelector("#r-lname");
+                let agee = document.querySelector("#r-age");
+                
+                
+                if( pw.value != cpw.value){
+                    document.querySelector('#warning').innerHTML = "Password and confirm password not match"
+                    document.querySelector('#warning').style.display = 'block'
+                }else if( pw.value.length < 2){
+                    document.querySelector('#warning').innerHTML = "Password length need to > 2"
+                    document.querySelector('#warning').style.display = 'block'
+                }else{
+                    document.querySelector('#warning').innerHTML = ''
+                    document.querySelector('#warning').style.display = 'block'
+                    ipcRenderer.send('register', JSON.stringify({
+                        userName: us.value,
+                        password: pw.value,
+                        firstName: fname.value,
+                        lastName: lname.value,
+                        age: agee.value,
+                    }))
+                }
+                e.preventDefault()
+            }
+
+            window.onload = () => {
+                document.querySelector("#l-username").focus()
+            }
+
+        </script>
+    </body>
+</html>

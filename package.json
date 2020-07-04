@@ -1,0 +1,19 @@
+{
+  "name": "letschat",
+  "version": "1.0.0",
+  "description": "just for fun",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "okay": "electron-packager . letschat --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^9.0.4",
+    "ws": "^7.3.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^14.2.1"
+  }
+}

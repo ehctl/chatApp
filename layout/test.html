@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html>
+    <head>  
+        <title> Home </title>
+        <script src='main.js'></script>
+        <link rel="stylesheet" href="test.css">
+        
+    </head>
+    <body>
+        <div class='top-menu'>
+            <div id='home' class="inline-block top-menu-item" > <img src='./home.png'></div>
+            <div id='social' class="inline-block top-menu-item" >   <img src='./social.png'>  </div> 
+            <div id='chat' class="inline-block top-menu-item">  <img src='./chat.png'> </div>   
+            <div class="option-div">
+                <img src="./option.png"  > 
+                <div id='option-dropdown' class="dropdown-content">   
+                    <div id='id' > About </div> 
+                    <div id='username'> tuan linh</div>
+                    <div id='logout'> Log out</div>
+                </div>   
+            </div>    
+        </div>
+        <div class='block'>
+            <div id='chatTab' style="display: none;">
+                <div class=' part-1'>
+                    <div id='secGroupChat' >
+                        
+                    </div>
+                </div>
+                <div id='secChat' class=' part-2' >
+                    <div class="divInput block ">
+                        <textarea id='input' onkeydown="inputKeydown(event)" class='txtInput inline-block'></textarea>
+                        <img id='imgSend' onclick="imgSendClick()" class='imgSend inline-block' src="sendMessage.png" width="50" height='50' alt='img failed'>
+                    </div>
+                    <div id='room' class="room block ">
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <div id='socialTab' class='socialTab' style="display: none;">
+                <div class='search-block' >
+                    <input id='searchUser' type="text" placeholder="Search..." >
+                    <img id='searchImg' src='search.png' >
+                </div>
+                <img id='loadingGif' src="./loading.gif" style="display:none;margin: 0 auto;">
+                <div class="friend-block">
+                    <!-- <div class='friend-info'>
+                        <input type="hidden" value=13423>
+                        <img class='avatar' src='./cat.png'>
+                        <div class="inline-block">
+                            <p>Nguyen vu tuan linh</p>
+                            <p> Age 20</p>
+                        </div>
+                        <div class='btnImg'>
+                            <img id='chatImg' src="./message.png" >
+                            <img id='addFriendImg' src="./addFriend.png" >
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div id='homeTab' class='homeTab'>
+                <div class='homeTabHeader'>
+                    <div class='homeImage'>
+                        <img id='homeAvatar' src="./cat.png">
+                        
+                        <img id='homeChangeAvatar' src='./changeAvatar.png' >
+                        <input id='imageFileChooser' type="file" style="display: none;" accept="image/png, .jpeg, .jpg, image/gif">
+                        <img id='previewImg' style="display: none;">
+                        <button id='btnChangeAvatar' style="display: none;"> Change avatar</button>
+                    </div>
+                    <div id='homeTabun'>
+                        Nguyễn Vũ Tuấn Linh
+                    </div>
+                </div>
+                <div class="homeTabBody">
+                    BIO: 
+                </div>
+            </div>
+            <div class='part-3'>
+                <div class="part-3-header block"> 
+                    <img id='notiImg' src='./noti.png' > 
+                    <img id='friendImg' src="./friendTab.png" >
+                </div>
+                <div class="part-3-content">
+                    <div id='notiDropdown' class="notification-dropdown" style="display: none;">
+                        <div id='notiDropdownBody' clnotification-dropdownass='notiDropdownBody'>
+                            
+                        </div>
+                        <button id='btnMoreNoti'> More notification</button>
+                    </div>
+                    
+                    <div id='friend-tab' class='friend-tab'>
+                        <div class="online-board block">
+                                Friend
+                        </div>   
+                        <div id='onlineFriend-tab' class="onlineFriend-tab">
+                          
+                        </div>
+                        
+                        <input type="text" placeholder="Search friend name">
+                    </div>
+                </div>                
+            </div>
+        </div>  
+    </body>
+</html>
